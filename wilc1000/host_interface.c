@@ -1101,9 +1101,14 @@ static WILC_Sint32 Handle_CfgParam(void * drvHandler,tstrHostIFCfgParamAttr* str
 		  }
 		  if(strHostIFCfgParamAttr->pstrCfgParamVal.u32SetCfgFlag & FRAG_THRESHOLD)
 		  {
-			 
-			  if(strHostIFCfgParamAttr->pstrCfgParamVal.frag_threshold>255 && strHostIFCfgParamAttr->pstrCfgParamVal.frag_threshold<7937)
+			  // marcom: check if strHostIFCfgParamAttr->pstrCfgParamVal.frag_threshold == 65535 (it means -1 was configured, aka disabled) 
+			  //         and convert it to the default value of 2346 
+			  if ((strHostIFCfgParamAttr->pstrCfgParamVal.frag_threshold>255 && strHostIFCfgParamAttr->pstrCfgParamVal.frag_threshold<7937) ||
+			  	strHostIFCfgParamAttr->pstrCfgParamVal.frag_threshold == 65535)
 			  {
+			  	  if (strHostIFCfgParamAttr->pstrCfgParamVal.frag_threshold == 65535)
+					strHostIFCfgParamAttr->pstrCfgParamVal.frag_threshold = 2346;
+
 				  strWIDList[u8WidCnt].u16WIDid = WID_FRAG_THRESHOLD;
 				  strWIDList[u8WidCnt].ps8WidVal = (WILC_Sint8*)&strHostIFCfgParamAttr->pstrCfgParamVal.frag_threshold;
 				  strWIDList[u8WidCnt].enuWIDtype= WID_SHORT;
