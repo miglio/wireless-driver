@@ -2017,7 +2017,7 @@ static void wilc_wlan_cleanup(void)
 		PRINT_ER("Error while reading reg\n");
 		release_bus(RELEASE_ALLOW_SLEEP);
 	}
-	PRINT_ER("Writing ABORT reg\n");
+	PRINT_D(GENERIC_DBG, "Writing ABORT reg\n");
   	ret = p->hif_func.hif_write_reg(WILC_GP_REG_0,(reg | ABORT_INT ));
 	if (!ret) {
 		PRINT_ER("Error while writing reg\n");

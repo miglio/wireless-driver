@@ -7665,7 +7665,7 @@ void GnrlAsyncInfoReceived(WILC_Uint8* pu8Buffer, WILC_Uint32 u32Length)
 	if(pstrWFIDrv->strWILC_UsrConnReq.pfUserConnectResult == WILC_NULL)
 	{
 		/* received mac status is not needed when there is no current Connect Request */
-		PRINT_ER("Received mac status is not needed when there is no current Connect Reques\n");
+		PRINT_D(HOSTINF_DBG, "Received mac status is not needed when there is no current Connect Reques\n");
 		/*BugID_5348*/
 		WILC_SemaphoreRelease(&hSemHostIntDeinit, NULL);
 		return;
