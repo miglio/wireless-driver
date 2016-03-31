@@ -2128,7 +2128,6 @@ static int WILC_WFI_set_wiphy_params(struct wiphy *wiphy, u32 changed)
 	{
 		PRINT_D(CFG80211_DBG,"Setting WIPHY_PARAM_FRAG_THRESHOLD %d\n",priv->dev->ieee80211_ptr->wiphy->frag_threshold);
 		pstrCfgParamVal.u32SetCfgFlag |= FRAG_THRESHOLD;
-		printk("Frag threshold received from cgf80211 = %u\n", priv->dev->ieee80211_ptr->wiphy->frag_threshold);
 		pstrCfgParamVal.frag_threshold = priv->dev->ieee80211_ptr->wiphy->frag_threshold;
 
 	}
